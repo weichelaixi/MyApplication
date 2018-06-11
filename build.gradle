@@ -7,8 +7,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.2'
-        
+        classpath 'com.android.tools.build:gradle:3.1.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -25,3 +25,13 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    buildToolsVersion = localBuildToolsVersion
+    compileSdkVersion = 27
+    minSdkVersion = 14
+    targetSdkVersion = 27
+    versionCode = 1
+    versionName = "1.0.0"
+}
+

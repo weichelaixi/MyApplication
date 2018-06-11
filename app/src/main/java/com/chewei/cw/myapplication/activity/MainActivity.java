@@ -6,12 +6,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.chewei.cw.myapplication.ItemBean;
+import com.chewei.cw.myapplication.bean.ItemBean;
 import com.chewei.cw.myapplication.R;
 import com.chewei.cw.myapplication.adapter.RecycleViewAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
-import com.chewei.cw.myapplication.ItemBean;
+import com.chewei.cw.myapplication.bean.ItemBean;
 import com.chewei.cw.myapplication.R;
 
 import java.util.List;

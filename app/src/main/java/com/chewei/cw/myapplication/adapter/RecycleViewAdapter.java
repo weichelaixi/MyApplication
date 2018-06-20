@@ -27,10 +27,15 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
 
     List<ItemBean> list;
     Context context;
+    OnItemClickListener onItemClickListener;
 
     public RecycleViewAdapter(List<ItemBean> list,Context context){
         this.list = list;
         this.context = context;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
     }
 
     @Override
@@ -53,7 +58,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onItemClickListener.onItemClick(position);
             }
         });
         if(holder instanceof NewsViewHolder){
@@ -102,4 +107,9 @@ public class RecycleViewAdapter extends RecyclerView.Adapter{
             ButterKnife.bind(this, itemView);
         }
     }
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
 }

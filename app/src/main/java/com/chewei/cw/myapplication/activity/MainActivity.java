@@ -1,21 +1,22 @@
 package com.chewei.cw.myapplication.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chewei.cw.myapplication.bean.ItemBean;
 import com.chewei.cw.myapplication.R;
 import com.chewei.cw.myapplication.adapter.RecycleViewAdapter;
+import com.weiche.module_common.BaseActivity;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        inintData();
         GridLayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),5);
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
@@ -41,9 +43,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         recycleView.setLayoutManager(layoutManager);
-        inintData();
         RecycleViewAdapter adapter = new RecycleViewAdapter(list,this);
         recycleView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new RecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                switch (position){
+                    case 0:
+                        //跳转module_girls模块的activity
+                        ARouter.getInstance().build("/girls/list").navigation();
+                        break;
+                }
+            }
+        });
     }
 
     private void inintData() {

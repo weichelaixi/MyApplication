@@ -22,6 +22,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':module_common')
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     if (!isModule.toBoolean()) {
         implementation project(':module_girls')
     }

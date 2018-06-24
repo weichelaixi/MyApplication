@@ -113,4 +113,15 @@ public class Utils {
         return obj;
     }
 
+    /**
+     * dip 转换成px
+     *
+     * @param dip
+     * @return
+     */
+    public static int dipToPx(Context context,float dip) {
+        float density = context.getResources().getDisplayMetrics().density;
+        return (int) (dip * density + 0.5f * (dip >= 0 ? 1 : -1));
+    }
+
 }

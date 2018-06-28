@@ -18,11 +18,17 @@ import com.chewei.cw.myapplication.R;
 import com.chewei.cw.myapplication.adapter.RecycleViewAdapter;
 import com.chewei.cw.myapplication.bean.ItemBean;
 import com.weiche.module_common.BaseActivity;
+import com.weiche.module_common.utils.KeepLog;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends BaseActivity {
 
@@ -85,6 +91,47 @@ public class MainActivity extends BaseActivity {
                     case 0:
                         //跳转module_girls模块的activity
                         ARouter.getInstance().build("/girls/list").navigation();
+                        break;
+                    case 1:
+                        //Rxjava的链式操作
+                        Observable.create(new ObservableOnSubscribe<Integer>() {
+                            //1.创建被观察者
+                            //定义发送事件
+                            @Override
+                            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                                e.onNext(1);
+                                e.onNext(2);
+                                e.onNext(3);
+                                e.onNext(4);
+                                e.onComplete();
+                            }
+                        }).subscribe(new Observer<Integer>() {
+                            //2.创建观察者 & 响应事件
+                            //3.通过订阅者subscribe连接观察者和被观察者
+                            // 默认最先调用复写的 onSubscribe（）
+                            @Override
+                            public void onSubscribe(Disposable d) {
+                                KeepLog.e(KeepLog.TAG,"开始使用subscribe连接");
+                            }
+
+                            @Override
+                            public void onNext(Integer integer) {
+                                KeepLog.e(KeepLog.TAG,"对onNext事件"+integer+"触发");
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                KeepLog.e(KeepLog.TAG,"对onError事件触发");
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                KeepLog.e(KeepLog.TAG,"对onComplete事件触发");
+                            }
+                        });
+                        break;
+                    case 2:
+
                         break;
                 }
             }

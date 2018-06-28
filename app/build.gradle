@@ -13,6 +13,12 @@ android {
     }
     buildTypes {
         release {
+            buildConfigField("int","RELEASE_DEBUG","0")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("int","RELEASE_DEBUG","1")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -25,6 +31,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     if (!isModule.toBoolean()) {
         implementation project(':module_girls')
+        implementation project(':module_fragmentation')
     }
 }
 

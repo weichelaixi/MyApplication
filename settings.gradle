@@ -1,1 +1,1 @@
-include ':app', ':module_girls', ':module_common'
+include ':app', ':module_girls', ':module_common', ':module_fragmentation'

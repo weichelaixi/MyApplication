@@ -1,10 +1,11 @@
-package utils;
+package com.weiche.module_common.utils;
 
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
 /**
  * Created by ${chewei} on 2018/6/22.
+ * 动画属性
  */
 public class CustomAnimation extends Animation {
 

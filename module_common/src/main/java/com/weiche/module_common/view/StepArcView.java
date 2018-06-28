@@ -1,4 +1,4 @@
-package com.weiche.module_girls.view;
+package com.weiche.module_common.view;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.weiche.module_common.R;
 import com.weiche.module_common.utils.Utils;
-import com.weiche.module_girls.R;
 
 /**
  * Created by ${chewei} on 2018/6/23.

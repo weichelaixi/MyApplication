@@ -14,12 +14,9 @@ import android.widget.Button;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.weiche.module_common.BaseActivity;
-import com.weiche.module_girls.view.StepArcView;
+import com.weiche.module_common.view.StepArcView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import utils.CustomAnimation;
+import com.weiche.module_common.utils.CustomAnimation;
 
 /**
  * Created by ${chewei} on 2018/6/21.

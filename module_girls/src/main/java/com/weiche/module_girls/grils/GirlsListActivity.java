@@ -11,9 +11,15 @@ import com.weiche.module_common.BaseActivity;
 
 public class GirlsListActivity extends BaseActivity {
 
+    GirlsView mView;
+    GirlsContracts.Persenter mPersenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mView = new GirlsView(this);
+        setContentView(mView);
+        mPersenter = new GirlsPresenter();
+        mPersenter.start();
     }
 }

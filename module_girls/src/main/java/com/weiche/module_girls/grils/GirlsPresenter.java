@@ -5,6 +5,15 @@ package com.weiche.module_girls.grils;
  * params:2018/6/29
  */
 
-public class GirlsPresenter {
+public class GirlsPresenter implements GirlsContracts.Persenter{
 
+    @Override
+    public void getGirls(int page, int size, boolean isRefresh) {
+
+    }
+
+    @Override
+    public void start() {
+
+    }
 }

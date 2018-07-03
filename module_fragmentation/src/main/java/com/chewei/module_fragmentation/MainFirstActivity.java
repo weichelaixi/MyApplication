@@ -1,5 +1,6 @@
 package com.chewei.module_fragmentation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,9 +54,9 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
             observerable.deleteObserver(user2);
             observerable.setInformation("JAVA是世界上最好用的语言！");
         }else if (i == R.id.button2) {
-
+            startActivity(new Intent(this,RecycleViewSideslipDeleteActivity.class));
         }else if (i == R.id.button3) {
-
+            startActivity(new Intent(this,RecycleViewSideslipDeleteItemActivity.class));
         }else if (i == R.id.button4) {
 
         }

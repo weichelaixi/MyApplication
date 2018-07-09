@@ -6,13 +6,17 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import com.weiche.module_common.BaseApplication;
 
 /**
  * <p>Utils初始化相关 </p>
@@ -151,6 +155,36 @@ public class Utils {
         } else {
             return false;
         }
+    }
+
+
+    /**
+     * 上次点击时间
+     */
+    private static long lastClickTime;
+    /**
+     * 判断是否快速双击
+     */
+    public static boolean isFastDoubleClick() {
+        String MSG = "isFastDoubleClick()";
+        long time = System.currentTimeMillis();
+
+        long timeD = time - lastClickTime;
+        Log.i(KeepLog.TAG, MSG + " timeD = " + timeD);
+
+        if (0 < timeD && timeD < 1000) {
+            return true;
+        }
+        lastClickTime = time;
+        return false;
+    }
+
+    /**
+     * 检查是否有可用网络
+     */
+    public static boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) BaseApplication.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return connectivityManager.getActiveNetworkInfo() != null;
     }
 
 }

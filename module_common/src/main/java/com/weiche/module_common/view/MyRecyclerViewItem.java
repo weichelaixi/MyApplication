@@ -16,6 +16,7 @@ import com.weiche.module_common.utils.KeepLog;
 /**
  * Created by ${chewei} on 2018/7/3.
  * params:2018/7/3
+ * 自定义ItemView来实现侧滑删除
  */
 
 public class MyRecyclerViewItem extends HorizontalScrollView {

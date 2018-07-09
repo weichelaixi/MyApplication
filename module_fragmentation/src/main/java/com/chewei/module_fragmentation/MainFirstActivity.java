@@ -1,13 +1,20 @@
 package com.chewei.module_fragmentation;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chewei.module_fragmentation.observer_pattern.ObserverUser;
 import com.chewei.module_fragmentation.observer_pattern.ObserverableBean;
 import com.weiche.module_common.BaseActivity;
+import com.weiche.module_girls.IMyAidlInterface;
 
 @Route(path = "/module/fragmenttation")
 public class MainFirstActivity extends BaseActivity implements View.OnClickListener{
@@ -16,11 +23,23 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
     Button button2;
     Button button3;
     Button button4;
+    public IMyAidlInterface iMyAidlInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        bindService(new Intent("debug.action"), new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                iMyAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+
+            }
+        },BIND_AUTO_CREATE);
         button = $(R.id.button);
         button2 = $(R.id.button2);
         button3 = $(R.id.button3);
@@ -53,11 +72,15 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
             observerable.deleteObserver(user2);
             observerable.setInformation("JAVA是世界上最好用的语言！");
         }else if (i == R.id.button2) {
-
+            startActivity(new Intent(this,RecycleViewSideslipDeleteActivity.class));
         }else if (i == R.id.button3) {
-
+            startActivity(new Intent(this,RecycleViewSideslipDeleteItemActivity.class));
         }else if (i == R.id.button4) {
-
+            try {
+                Toast.makeText(MainFirstActivity.this,iMyAidlInterface.name(),Toast.LENGTH_LONG).show();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

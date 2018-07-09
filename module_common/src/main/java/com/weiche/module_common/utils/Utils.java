@@ -6,12 +6,17 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
+import com.weiche.module_common.BaseApplication;
 
 /**
  * <p>Utils初始化相关 </p>
@@ -122,6 +127,64 @@ public class Utils {
     public static int dipToPx(Context context,float dip) {
         float density = context.getResources().getDisplayMetrics().density;
         return (int) (dip * density + 0.5f * (dip >= 0 ? 1 : -1));
+    }
+
+    /**
+     * 关闭软键盘
+     *
+     * @param activity
+     */
+    public static void closeKeybord(Activity activity) {
+        final View v = activity.getWindow().peekDecorView();
+        if (v != null && v.getWindowToken() != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
+    }
+
+    /**
+     * Returns true if the string is null or 0-length.
+     *
+     * @param str the string to be examined
+     * @return true if str is null or zero length
+     */
+    public static boolean isEmpty(CharSequence str) {
+        if (str == null || str.length() == 0
+                || "null".equals(str.toString().trim())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    /**
+     * 上次点击时间
+     */
+    private static long lastClickTime;
+    /**
+     * 判断是否快速双击
+     */
+    public static boolean isFastDoubleClick() {
+        String MSG = "isFastDoubleClick()";
+        long time = System.currentTimeMillis();
+
+        long timeD = time - lastClickTime;
+        Log.i(KeepLog.TAG, MSG + " timeD = " + timeD);
+
+        if (0 < timeD && timeD < 1000) {
+            return true;
+        }
+        lastClickTime = time;
+        return false;
+    }
+
+    /**
+     * 检查是否有可用网络
+     */
+    public static boolean isNetworkConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) BaseApplication.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return connectivityManager.getActiveNetworkInfo() != null;
     }
 
 }

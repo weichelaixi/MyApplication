@@ -17,6 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainGirlsActivity"/>
+        <service android:name="debug.TestService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="debug.action" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </service>
     </application>
 
 

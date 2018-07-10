@@ -20,7 +20,7 @@ public class TestService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return new MyBinder();
     }
 
     private class MyBinder extends IMyAidlInterface.Stub{

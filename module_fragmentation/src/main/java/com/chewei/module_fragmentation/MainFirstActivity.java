@@ -14,7 +14,12 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.chewei.module_fragmentation.observer_pattern.ObserverUser;
 import com.chewei.module_fragmentation.observer_pattern.ObserverableBean;
 import com.weiche.module_common.BaseActivity;
+import com.weiche.module_common.utils.KeepLog;
 import com.weiche.module_girls.IMyAidlInterface;
+import com.weiche.module_girls.UserServer;
+import com.weiche.module_girls.grils.User;
+
+import java.util.List;
 
 @Route(path = "/module/fragmenttation")
 public class MainFirstActivity extends BaseActivity implements View.OnClickListener{
@@ -22,32 +27,65 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
     Button button;
     Button button2;
     Button button3;
-    Button button4;
+    Button button4,button5,button6;
     public IMyAidlInterface iMyAidlInterface;
+    public UserServer userServer;
+    private boolean connected;
+
+    List<User> userList;
+    int userI = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bindService(new Intent("debug.action"), new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                iMyAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName componentName) {
-
-            }
-        },BIND_AUTO_CREATE);
+        bindService(new Intent().setPackage("com.weiche.module_girls").setAction("debug.action"), serviceConnection,BIND_AUTO_CREATE);
+        bindService(new Intent().setPackage("com.weiche.module_girls").setAction("debug.UserService"),userServiceConnection,BIND_AUTO_CREATE);
         button = $(R.id.button);
         button2 = $(R.id.button2);
         button3 = $(R.id.button3);
         button4 = $(R.id.button4);
+        button5 = $(R.id.button5);
+        button6 = $(R.id.button6);
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
+    }
+
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            iMyAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
+    ServiceConnection userServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            userServer = UserServer.Stub.asInterface(iBinder);
+            connected = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            connected = false;
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(connected){
+            unbindService(userServiceConnection);
+        }
     }
 
     @Override
@@ -80,6 +118,29 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
                 Toast.makeText(MainFirstActivity.this,iMyAidlInterface.name(),Toast.LENGTH_LONG).show();
             } catch (RemoteException e) {
                 e.printStackTrace();
+            }
+        }else if(i == R.id.button5){
+            if(connected){
+                try {
+                    userList = userServer.getBookList();
+                    for (User user:
+                         userList) {
+                        KeepLog.e(KeepLog.TAG,user.toString());
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else if(i == R.id.button6){
+            if(connected){
+                User user = new User("张三"+userI);
+                try {
+                    userServer.addUserInOut(user);
+                    KeepLog.e(KeepLog.TAG,user.toString());
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                userI++;
             }
         }
     }

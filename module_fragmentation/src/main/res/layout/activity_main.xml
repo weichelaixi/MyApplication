@@ -45,5 +45,10 @@
                 android:layout_height="wrap_content"
                 android:text="进程间通信-添加-"/>
         </LinearLayout>
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="fragment_viewpager_lifeCycle"/>
     </LinearLayout>
 </ScrollView>

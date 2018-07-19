@@ -19,6 +19,8 @@
         <activity android:name=".RecycleViewSideslipDeleteActivity">
         </activity>
         <activity android:name=".RecycleViewSideslipDeleteItemActivity"/>
+        <activity android:name=".LifeCycleActivity"
+            android:theme="@style/AppNoActionBar"/>
     </application>
 
 </manifest>

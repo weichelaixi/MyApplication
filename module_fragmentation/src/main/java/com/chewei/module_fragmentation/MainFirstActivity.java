@@ -27,7 +27,7 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
     Button button;
     Button button2;
     Button button3;
-    Button button4,button5,button6;
+    Button button4,button5,button6,button7;
     public IMyAidlInterface iMyAidlInterface;
     public UserServer userServer;
     private boolean connected;
@@ -47,12 +47,14 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
         button4 = $(R.id.button4);
         button5 = $(R.id.button5);
         button6 = $(R.id.button6);
+        button7 = $(R.id.button7);
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
         button4.setOnClickListener(this);
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
+        button7.setOnClickListener(this);
     }
 
     ServiceConnection serviceConnection = new ServiceConnection() {
@@ -142,6 +144,8 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
                 }
                 userI++;
             }
+        }else if(i == R.id.button7){
+            startActivity(new Intent(MainFirstActivity.this,LifeCycleActivity.class));
         }
     }
 }

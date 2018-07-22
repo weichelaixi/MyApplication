@@ -44,7 +44,6 @@ public class GirlsAdapter extends RecyclerArrayAdapter<Girls> {
             super.setData(data);
             Glide.with(getContext())
                     .load(data.getUrl())
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .into(image);
         }
     }

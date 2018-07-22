@@ -39,6 +39,16 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ClassLoader classLoader = getClassLoader();
+        if(classLoader != null){
+            KeepLog.e(KeepLog.TAG,"classLoader" + classLoader.toString());
+            while (classLoader.getParent() != null){
+                classLoader = classLoader.getParent();
+                KeepLog.e(KeepLog.TAG,"classLoader" + classLoader.toString());
+            }
+        }
+
         bindService(new Intent().setPackage("com.weiche.module_girls").setAction("debug.action"), serviceConnection,BIND_AUTO_CREATE);
         bindService(new Intent().setPackage("com.weiche.module_girls").setAction("debug.UserService"),userServiceConnection,BIND_AUTO_CREATE);
         button = $(R.id.button);

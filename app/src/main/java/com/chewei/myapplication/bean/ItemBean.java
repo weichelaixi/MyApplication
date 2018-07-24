@@ -1,4 +1,4 @@
-package com.chewei.cw.myapplication.bean;
+package com.chewei.myapplication.bean;
 
 import java.io.Serializable;
 

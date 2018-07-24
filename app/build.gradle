@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.chewei.cw.myapplication"
+        applicationId "com.chewei.myapplication"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
@@ -25,15 +25,16 @@ android {
     }
 }
 
-dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':module_common')
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    if (!isModule.toBoolean()) {
-        implementation project(':module_girls')
-        implementation project(':module_fragmentation')
-    }
-}
+ dependencies {
+     implementation fileTree(include: ['*.jar'], dir: 'libs')
+     implementation project(':module_common')
+     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+     if (!isModule.toBoolean()) {
+         implementation project(':module_girls')
+         implementation project(':module_fragmentation')
+     }
+     implementation files('libs/MiPush_SDK_Client_3_6_9.jar')
+ }
 
 configurations.all {
     resolutionStrategy.force 'com.android.support:support-annotations:27.1.1'

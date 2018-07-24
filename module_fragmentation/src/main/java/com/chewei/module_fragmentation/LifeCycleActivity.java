@@ -72,7 +72,7 @@ public class LifeCycleActivity extends BaseActivity {
         fragments.add(new FragmentOne());
         fragments.add(new FragmentTwo());
         fragments.add(new FragmentThree());
-        vp_main_activity.setOffscreenPageLimit(2);
+//        vp_main_activity.setOffscreenPageLimit(2);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(),fragments);
         vp_main_activity.setAdapter(adapter);
         tab_main_activity.setupWithViewPager(vp_main_activity);

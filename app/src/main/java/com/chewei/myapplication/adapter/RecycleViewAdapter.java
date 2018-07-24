@@ -1,4 +1,4 @@
-package com.chewei.cw.myapplication.adapter;
+package com.chewei.myapplication.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
-import com.chewei.cw.myapplication.bean.ItemBean;
-import com.chewei.cw.myapplication.R;
+import com.chewei.myapplication.R;
+import com.chewei.myapplication.bean.ItemBean;
 
 import java.util.List;
 

@@ -32,6 +32,12 @@ public class FragmentThree extends Fragment {
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        KeepLog.e("    FragmentThree-->setUserVisibleHint");
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         KeepLog.e("    FragmentThree-->onCreateView");
         View view = inflater.inflate(R.layout.fragment_layout,container,false);

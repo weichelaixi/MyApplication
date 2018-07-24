@@ -1,4 +1,4 @@
-package com.chewei.cw.myapplication.activity;
+package com.chewei.myapplication.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,9 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.chewei.cw.myapplication.R;
-import com.chewei.cw.myapplication.adapter.RecycleViewAdapter;
-import com.chewei.cw.myapplication.bean.ItemBean;
+import com.chewei.myapplication.R;
+import com.chewei.myapplication.adapter.RecycleViewAdapter;
+import com.chewei.myapplication.bean.ItemBean;
 import com.weiche.module_common.BaseActivity;
 import com.weiche.module_common.utils.KeepLog;
 

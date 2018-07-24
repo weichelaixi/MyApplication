@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
-      <module fileurl="file://E:/chewei/MyDemoApplication/.idea/MyApplication.iml" filepath="E:/chewei/MyDemoApplication/.idea/MyApplication.iml" />
+      <module fileurl="file://E:\chewei\MyDemoApplication\MyApplication.iml" filepath="E:\chewei\MyDemoApplication\MyApplication.iml" />
+      <module fileurl="file://E:\chewei\MyDemoApplication\.idea\MyApplication.iml" filepath="E:\chewei\MyDemoApplication\.idea\MyApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MyDemoApplication.iml" filepath="$PROJECT_DIR$/.idea/MyDemoApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_common/module_common.iml" filepath="$PROJECT_DIR$/module_common/module_common.iml" />

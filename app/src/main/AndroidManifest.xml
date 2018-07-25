@@ -12,7 +12,7 @@
         android:protectionLevel="signature" /> <!--这里com.xiaomi.mipushdemo改成app的包名-->
     <uses-permission android:name=".permission.MIPUSH_RECEIVE" /><!--这里com.xiaomi.mipushdemo改成app的包名-->
     <application
-        android:name=".mipush.DemoApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -76,10 +76,6 @@
                 <action android:name="com.xiaomi.mipush.ERROR" />
             </intent-filter>
         </receiver>-->
-        <activity
-            android:name=".mipush.PermissionActivity"
-            android:theme="@style/PermissionDialog"
-            android:label="" />
 
         <service
             android:name="com.xiaomi.push.service.XMJobService"
@@ -102,7 +98,7 @@
             android:enabled="true" />
 
         <receiver
-            android:name=".mipush.DemoMessageReceiver"
+            android:name=".Mipush_Broadcast"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />

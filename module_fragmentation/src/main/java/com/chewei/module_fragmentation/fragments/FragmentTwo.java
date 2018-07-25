@@ -40,7 +40,7 @@ public class FragmentTwo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         KeepLog.e("    FragmentTwo-->onCreateView");
-        View view = inflater.inflate(R.layout.fragment_layout,container,false);
+        View view = inflater.inflate(R.layout.fragment_two_layout,container,false);
         TextView textView = view.findViewById(R.id.content_tv);
         textView.setText("Two");
         return view;

@@ -60,4 +60,5 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:3.10.0'
     api 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     api 'com.android.support:multidex:1.0.3'
+    api 'pub.devrel:easypermissions:1.2.0'
 }

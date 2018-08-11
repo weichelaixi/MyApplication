@@ -155,7 +155,8 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
                 userI++;
             }
         }else if(i == R.id.button7){
-            startActivity(new Intent(MainFirstActivity.this,LifeCycleActivity.class));
+            Intent intent = new Intent(MainFirstActivity.this,LifeCycleActivity.class);
+            startActivity(intent);
         }
     }
 }

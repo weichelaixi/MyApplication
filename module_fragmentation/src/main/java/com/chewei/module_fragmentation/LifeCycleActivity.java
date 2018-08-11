@@ -1,5 +1,6 @@
 package com.chewei.module_fragmentation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,11 @@ import java.util.List;
 
 public class LifeCycleActivity extends BaseActivity {
     List<Fragment> fragments;
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

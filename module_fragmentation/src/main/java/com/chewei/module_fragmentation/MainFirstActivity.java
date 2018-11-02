@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.chewei.module_fragmentation.activity.LifeCycleActivity;
+import com.chewei.module_fragmentation.activity.RecycleViewSideslipDeleteActivity;
+import com.chewei.module_fragmentation.activity.RecycleViewSideslipDeleteItemActivity;
 import com.chewei.module_fragmentation.observer_pattern.ObserverUser;
 import com.chewei.module_fragmentation.observer_pattern.ObserverableBean;
 import com.weiche.module_common.BaseActivity;
@@ -27,7 +30,7 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
     Button button;
     Button button2;
     Button button3;
-    Button button4,button5,button6,button7;
+    Button button4,button5,button6,button7,button8;
     public IMyAidlInterface iMyAidlInterface;
     public UserServer userServer;
     private boolean connected;
@@ -58,6 +61,7 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
         button5 = $(R.id.button5);
         button6 = $(R.id.button6);
         button7 = $(R.id.button7);
+        button8 = $(R.id.button8);
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
@@ -65,6 +69,7 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
         button7.setOnClickListener(this);
+        button8.setOnClickListener(this);
     }
 
     ServiceConnection serviceConnection = new ServiceConnection() {
@@ -155,8 +160,8 @@ public class MainFirstActivity extends BaseActivity implements View.OnClickListe
                 userI++;
             }
         }else if(i == R.id.button7){
-            Intent intent = new Intent(MainFirstActivity.this,LifeCycleActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(MainFirstActivity.this,LifeCycleActivity.class));
+        }else if(i == R.id.button8){
         }
     }
 }

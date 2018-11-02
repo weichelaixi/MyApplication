@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.chewei.module_fragmentation.R;
 import com.weiche.module_common.utils.KeepLog;
@@ -41,8 +40,8 @@ public class FragmentTwo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         KeepLog.e("    FragmentTwo-->onCreateView");
         View view = inflater.inflate(R.layout.fragment_two_layout,container,false);
-        TextView textView = view.findViewById(R.id.content_tv);
-        textView.setText("Two");
+//        TextView textView = view.findViewById(R.id.content_tv);
+//        textView.setText("Two");
         return view;
     }
 

@@ -1,4 +1,4 @@
-package com.chewei.module_fragmentation;
+package com.chewei.module_fragmentation.activity;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -6,10 +6,11 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
-import com.chewei.module_fragmentation.adapter.RecycleViewItemDeleteAdapter;
+import com.chewei.module_fragmentation.R;
+import com.chewei.module_fragmentation.adapter.RecycleViewDeleteAdapter;
 import com.chewei.module_fragmentation.bean.Inventory;
-import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.weiche.module_common.BaseActivity;
+import com.weiche.module_common.view.SlideDeleteRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +21,15 @@ import java.util.Random;
  * params:2018/7/3
  */
 
-public class RecycleViewSideslipDeleteItemActivity extends BaseActivity {
+public class RecycleViewSideslipDeleteActivity extends BaseActivity {
 
-    public EasyRecyclerView recyclerView;
+    public SlideDeleteRecyclerView recyclerView;
     private List<Inventory> mInventories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.easyrecycleview_layout);
+        setContentView(R.layout.recycleview_layout);
         recyclerView = $(R.id.easyrecycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this,DividerItemDecoration.VERTICAL);
@@ -46,13 +47,14 @@ public class RecycleViewSideslipDeleteItemActivity extends BaseActivity {
             inventory.setVolume(random.nextFloat());
             mInventories.add(inventory);
         }
-        final RecycleViewItemDeleteAdapter deleteAdapter = new RecycleViewItemDeleteAdapter(this,mInventories);
+        final RecycleViewDeleteAdapter deleteAdapter = new RecycleViewDeleteAdapter(this,mInventories);
         recyclerView.setAdapter(deleteAdapter);
-        deleteAdapter.setOnDeleteClickListener(new RecycleViewItemDeleteAdapter.OnDeleteClickLister() {
+        deleteAdapter.setOnDeleteClickListener(new RecycleViewDeleteAdapter.OnDeleteClickLister() {
             @Override
             public void onDeleteClick(View view, int position) {
                 mInventories.remove(position);
                 deleteAdapter.notifyDataSetChanged();
+                recyclerView.closeMenu();
             }
         });
 

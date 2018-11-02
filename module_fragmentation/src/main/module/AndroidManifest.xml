@@ -16,11 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecycleViewSideslipDeleteActivity">
+        <activity android:name=".activity.RecycleViewSideslipDeleteActivity">
         </activity>
-        <activity android:name=".RecycleViewSideslipDeleteItemActivity"/>
-        <activity android:name=".LifeCycleActivity"
+        <activity android:name=".activity.RecycleViewSideslipDeleteItemActivity"/>
+        <activity android:name=".activity.LifeCycleActivity"
             android:theme="@style/AppNoActionBar"/>
+        <activity android:name=".activity.FileSelectedActivity"/>
     </application>
 
 </manifest>

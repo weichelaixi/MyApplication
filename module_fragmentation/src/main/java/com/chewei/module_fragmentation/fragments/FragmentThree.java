@@ -1,13 +1,16 @@
 package com.chewei.module_fragmentation.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.chewei.module_fragmentation.activity.FileSelectedActivity;
 import com.chewei.module_fragmentation.R;
 import com.weiche.module_common.utils.KeepLog;
 
@@ -18,6 +21,8 @@ import com.weiche.module_common.utils.KeepLog;
 
 public class FragmentThree extends Fragment {
 
+
+    public TextView textView;
 
     @Override
     public void onAttach(Context context) {
@@ -41,8 +46,21 @@ public class FragmentThree extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         KeepLog.e("    FragmentThree-->onCreateView");
         View view = inflater.inflate(R.layout.fragment_layout,container,false);
-        TextView textView = view.findViewById(R.id.content_tv);
-        textView.setText("Three");
+        SwipeRefreshLayout refreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.refreshLayout);
+        textView = view.findViewById(R.id.content_tv);
+        textView.setText("one");
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//                intent.setType("storage/extSdCard/*");
+//                Intent intentWrapper = Intent.createChooser(intent, "Select a File to Upload");
+//                startActivityForResult(intentWrapper,
+//                        1002);
+                startActivity(new Intent(getActivity(),FileSelectedActivity.class));
+
+            }
+        });
         return view;
     }
 
@@ -92,5 +110,10 @@ public class FragmentThree extends Fragment {
     public void onDetach() {
         super.onDetach();
         KeepLog.e("   FragmentThree-->onDetach");
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

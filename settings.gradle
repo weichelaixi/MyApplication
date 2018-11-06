@@ -1,1 +1,1 @@
-include ':app', ':module_girls', ':module_common', ':module_fragmentation'
+include ':app', ':module_girls', ':module_common', ':module_fragmentation', ':module_mvp_rxjava_retrofit'

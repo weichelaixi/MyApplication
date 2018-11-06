@@ -32,6 +32,7 @@ android {
      if (!isModule.toBoolean()) {
          implementation project(':module_girls')
          implementation project(':module_fragmentation')
+         implementation project(':module_mvp_rxjava_retrofit')
      }
      implementation files('libs/MiPush_SDK_Client_3_6_9.jar')
  }

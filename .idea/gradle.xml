@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/module_common" />
             <option value="$PROJECT_DIR$/module_fragmentation" />
             <option value="$PROJECT_DIR$/module_girls" />
+            <option value="$PROJECT_DIR$/module_mvp_rxjava_retrofit" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

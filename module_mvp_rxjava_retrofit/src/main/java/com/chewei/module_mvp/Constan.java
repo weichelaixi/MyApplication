@@ -8,5 +8,5 @@ package com.chewei.module_mvp;
 public class Constan {
 
     //http://api.avatardata.cn/Weather/Query?key=75bfe88f27a34311a41591291b7191ce&cityname=%E9%95%BF%E6%B2%99
-    public static final String WHETHER_URL = "http://api.avatardata.cn/";
+    public static final String WHETHER_URL = "https://free-api.heweather.com";
 }

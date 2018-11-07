@@ -6,26 +6,32 @@ import com.chewei.module_mvp.api.WeatherServiceApi;
 import com.chewei.module_mvp.base.BaseModel;
 import com.chewei.module_mvp.base.IBaseRequestCallBack;
 import com.chewei.module_mvp.bean.WeatherInfoBean;
-import com.chewei.module_mvp.helper.RxUtils;
+import com.weiche.module_common.http.RxUtil;
 
 import rx.Subscriber;
+import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by ${chewei} on 2018/11/6.
- * 描述:
+ * 描述:MVP中的M实现类，处理业务逻辑数据
  */
 
 public class WeatherModelImp extends BaseModel implements WeatherModel<WeatherInfoBean>{
+    private Context context = null;
+    private WeatherServiceApi weatherServiceApi;
+    private CompositeSubscription mCompositeSubscription;
 
-    Context mContext;
-    public WeatherModelImp(Context context) {
-        this.mContext = context;
+    public WeatherModelImp(Context mContext) {
+        super();
+        context = mContext;
+        mCompositeSubscription = new CompositeSubscription();
     }
 
     @Override
-    public void loadWeather(String city, String key, final IBaseRequestCallBack<WeatherInfoBean> iBaseRequestCallBack) {
-        retrofitManager.getService().loadWeatherInfo(key,city)
-                .compose(RxUtils.<WeatherInfoBean>rxSchedulerHelper())
+    public void loadWeather(String key, String city, final IBaseRequestCallBack iBaseRequestCallBack) {
+        Subscription subscription = retrofitManager.getService().loadWeatherInfo(key, city)  //将subscribe添加到subscription，用于注销subscribe
+                .compose(RxUtil.<WeatherInfoBean>rxSchedulerHelper())
                 .subscribe(new Subscriber<WeatherInfoBean>() {
 
                     @Override
@@ -53,10 +59,15 @@ public class WeatherModelImp extends BaseModel implements WeatherModel<WeatherIn
                         iBaseRequestCallBack.requestSuccess(weatherInfoBean);
                     }
                 });
+        mCompositeSubscription.add(subscription);
     }
 
     @Override
     public void onUnsubscribe() {
-
+        //判断状态
+        if(mCompositeSubscription.isUnsubscribed()){
+            mCompositeSubscription.clear();  //注销
+            mCompositeSubscription.unsubscribe();
+        }
     }
 }

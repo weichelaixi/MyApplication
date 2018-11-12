@@ -1,5 +1,6 @@
 if(isModule.toBoolean()){
     apply plugin: 'com.android.application'
+    apply plugin: 'com.aliyun.ams.emas-services'
 }else{
     apply plugin: 'com.android.library'
 }
@@ -31,6 +32,18 @@ android {
                 java{
                     exclude 'debug/**'
                 }
+
+                applicationVariants.all { variant ->
+                    variant.outputs.each { output ->
+                        def outputFile = output.outputFile
+                        if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                            def fileName = "Module${rootProject.ext.versionName}_${rootProject.ext.versionCode}" +
+                                    "_${releaseTime()}" + "_${variant.productFlavors[0].name}.apk"
+                            output.outputFile = new File(outputFile.parent, fileName)
+                        }
+                    }
+                }
+
             }
         }
     }

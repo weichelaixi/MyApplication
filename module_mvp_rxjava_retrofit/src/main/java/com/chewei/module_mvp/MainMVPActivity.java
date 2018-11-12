@@ -14,7 +14,7 @@ import com.weiche.module_common.BaseActivity;
 public class MainMVPActivity extends BaseActivity implements WeatherView{
 
     public TextView contentTv;
-    public Button button;
+    public Button button,button2;
     public WeatherPresenterImp weatherPresenterImp;
     public ProgressDialog progressDialog;
 
@@ -24,6 +24,7 @@ public class MainMVPActivity extends BaseActivity implements WeatherView{
         setContentView(R.layout.activity_main_mvp);
         contentTv = $(R.id.textView);
         button = $(R.id.button);
+        button2 = $(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

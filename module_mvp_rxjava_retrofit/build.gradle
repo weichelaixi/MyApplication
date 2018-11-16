@@ -6,8 +6,15 @@ if(isModule.toBoolean()){
 }
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'android'
+            keyPassword 'wei151104'
+            storeFile file('E:/chewei/MyDemoApplication/module_mvp_rxjava_retrofit/android.jks')
+            storePassword '151104'
+        }
+    }
     compileSdkVersion rootProject.ext.compileSdkVersion
-
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
@@ -16,45 +23,31 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
 
     }
-
     sourceSets {
-        main{
-            if(isModule.toBoolean()){
+        main {
+            if (isModule.toBoolean()) {
                 manifest.srcFile "src/main/module/AndroidManifest.xml"
-            }else{
+            } else {
                 manifest.srcFile "src/main/AndroidManifest.xml"
                 //集成开发模式下排除debug文件夹中的所有Java文件
-                java{
+                java {
                     exclude 'debug/**'
                 }
-
-                applicationVariants.all { variant ->
-                    variant.outputs.each { output ->
-                        def outputFile = output.outputFile
-                        if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                            def fileName = "Module${rootProject.ext.versionName}_${rootProject.ext.versionCode}" +
-                                    "_${releaseTime()}" + "_${variant.productFlavors[0].name}.apk"
-                            output.outputFile = new File(outputFile.parent, fileName)
-                        }
-                    }
-                }
-
             }
         }
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
-
 }
 
 dependencies {

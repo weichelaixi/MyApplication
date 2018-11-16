@@ -3,7 +3,7 @@
     package="com.chewei.module_mvp">
 
     <application
-        android:name="debug.MyApplication"
+        android:name="debug.SophixStubApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.taobao.android.hotfix.IDSECRET"
-            android:value="25258703" />
+            android:value="25258703-1" />
         <meta-data
             android:name="com.taobao.android.hotfix.APPSECRET"
             android:value="66887a5fdfd0949c7dd5f28576b6dde4" />

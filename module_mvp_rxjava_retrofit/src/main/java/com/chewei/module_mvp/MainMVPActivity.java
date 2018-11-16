@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chewei.module_mvp.bean.WeatherInfoBean;
 import com.chewei.module_mvp.presender.WeatherPresenterImp;
@@ -28,6 +29,7 @@ public class MainMVPActivity extends BaseActivity implements WeatherView{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(MainMVPActivity.this,"这是第散散三三三三三所所所所所所所次加载的界面",Toast.LENGTH_LONG).show();
                 weatherPresenterImp.loadWeather("098f94fc00e142d2901df4276e3342b4", "北京");
             }
         });
